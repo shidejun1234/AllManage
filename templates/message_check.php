@@ -102,7 +102,7 @@ function status(e){
     var id="#ttt"+e;
     $.ajax({
        type: "POST",
-       url: "message_check_files/status.php",
+       url: "status.php",
        data: {
           id:e,
           status:$(id).text()

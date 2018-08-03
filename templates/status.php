@@ -1,5 +1,5 @@
 <?php
-require_once '../../dbconfig.php';
+require_once '../dbconfig.php';
 header("content-type:text/html;charset=utf-8");
     //取表单数据
 $id = $_POST['id'];

@@ -47,7 +47,7 @@ include('../isLogin.php');
             <td class="label" >栏目:</td>
             <td>
               <select name="column">
-              ﻿<option value='3'>新闻动态</option><option value='4'>成功案例</option>             </select>
+              ﻿<option value='新闻动态'>新闻动态</option><option value='成功案例'>成功案例</option>             </select>
             </td>
           </tr>
           <tr>
