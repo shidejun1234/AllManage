@@ -20,8 +20,8 @@ $result = mysql_query($query);
 <script src="../js/dataTables/jquery.dataTables.js"></script>
 <script src="../js/dataTables/dataTables.bootstrap.js"></script>
 </head>
-
 <body>
+
     <!--当前操作  -->
     <div id="pagehead" style="width: 100%;position: fixed; top: 0px;background:#DDEEF2;padding: 12px;border-bottom: 2px solid #BBDDE5; ">
        <span style="font-size: 13px;color: #555555;">当前操作 &gt;</span>
@@ -65,8 +65,10 @@ $result = mysql_query($query);
                   echo "<td>" . $row['time'] . "</td>";
                   if($row['status']=="1"){
                     $status="已看";
+                    $btncolor="btn-success";
                 }else{
                     $status="未看";
+                    $btncolor="btn-warning";
                 }
                 /*echo "<td><div class='form-group input-group'>
                 <div align='left'>&nbsp;&nbsp;
@@ -75,7 +77,7 @@ $result = mysql_query($query);
                 </div>
             </div></td>";*/
             echo "<td style='text-align:center;'><div class='form-group input-group status' id='status'>
-            <a id='ttt".$row['id']."' onclick='status(".$row['id'].")' class='btn btn-danger btn-sm shiny deletethis'>".$status."</a>
+            <a id='ttt".$row['id']."' onclick='status(".$row['id'].")' class='btn btn-sm shiny deletethis ".$btncolor."'>".$status."</a>
             </div></td>";
             echo "<td style='text-align:center;'><input type='button' name='".$row['id']."' value='删除' id='delete' class='btn btn-danger btn-sm shiny deletethis'></td>";
             echo "</tr>";
@@ -102,7 +104,7 @@ function status(e){
     var id="#ttt"+e;
     $.ajax({
        type: "POST",
-       url: "status.php",
+       url: "status_message.php",
        data: {
           id:e,
           status:$(id).text()
@@ -110,7 +112,7 @@ function status(e){
       },
       success: function(data){
           alert(data);
-          window.location.reload();
+        window.location.reload();
       }
   });
 }
@@ -122,7 +124,7 @@ function status(e){
   };
   $.ajax({
    type: "POST",
-   url: "delete.php",
+   url: "delete_message.php",
    data: {
       id:this.name
 
@@ -140,6 +142,7 @@ function status(e){
     this.checked=userids;
 });
 });
+
   $('#deletecheck').click(function(event) {
     var f=confirm("确定删除吗?");
     if (!f) {
@@ -154,7 +157,7 @@ function status(e){
     ids = ids.substring(0, ids.lastIndexOf(','));
     $.ajax({
        type: "POST",
-       url: "delete.php",
+       url: "delete_message.php",
        data: {
           id:ids
 

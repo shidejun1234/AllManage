@@ -61,14 +61,14 @@ body{
 </head>
 <body >
     <div id="header-div">
-          <div id="logo-div" style=""><h3>﻿鹿角巷优化站后台管理系统</h3></div>
+          <div id="logo-div" style=""><h3>﻿餐饮加盟后台管理系统</h3></div>
               <div id="submenu-div">
                 <ul>
                     <li><a href="#">帮助</a></li>
                      <li><a href="password_modify.php" target="main-frame">个人设置</a></li>
                      <li><a href="mainFrame.php"  target="_parent" >刷新</a></li>
-                     <li><a href="../index.html"  target="_blank" >网站主页</a></li>
-                     <li><a href="#">用户：lujiaoxiang</a></li>
+                     <li><a href="../index.php"  target="_blank" >网站主页</a></li>
+                     <li><a href="#">用户：<?=$_SESSION ['userName']?></a></li>
                 </ul>
                 <div id="send_info" style="padding: 5px 10px 0 0; clear:right;text-align: right; color: #FF9900;width:40%;float: right;">
                   <a >&nbsp;</a>

@@ -12,7 +12,7 @@ class ValidateCode {
  private $fontcolor;//指定字体颜色
  //构造方法初始化
  public function __construct() {
-  $this->font = dirname(__FILE__).'/font/elephant.ttf';//注意字体路径要写对，否则显示不了图片
+  $this->font = 'font/Elephant.ttf';//注意字体路径要写对，否则显示不了图片
  }
  //生成随机码
  private function createCode() {
@@ -38,15 +38,15 @@ class ValidateCode {
  //生成线条、雪花
  private function createLine() {
   //线条
-  /*for ($i=0;$i<6;$i++) {
+  for ($i=0;$i<6;$i++) {
    $color = imagecolorallocate($this->img,mt_rand(0,156),mt_rand(0,156),mt_rand(0,156));
    imageline($this->img,mt_rand(0,$this->width),mt_rand(0,$this->height),mt_rand(0,$this->width),mt_rand(0,$this->height),$color);
-  }*/
+  }
   //雪花
-  /*for ($i=0;$i<100;$i++) {
+  for ($i=0;$i<100;$i++) {
    $color = imagecolorallocate($this->img,mt_rand(200,255),mt_rand(200,255),mt_rand(200,255));
    imagestring($this->img,mt_rand(1,5),mt_rand(0,$this->width),mt_rand(0,$this->height),'*',$color);
-  }*/
+  }
  }
  //输出
  private function outPut() {
@@ -58,7 +58,7 @@ class ValidateCode {
  public function doimg() {
   $this->createBg();
   $this->createCode();
-  $this->createLine();
+  //$this->createLine();
   $this->createFont();
   $this->outPut();
  }

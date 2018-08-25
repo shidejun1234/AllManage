@@ -1,7 +1,7 @@
 <?php
 session_start();
-require './ValidateCode.class.php';  //ÏÈ°ÑÀà°üº¬½øÀ´£¬Êµ¼ÊÂ·¾¶¸ù¾ÝÊµ¼ÊÇé¿ö½øÐÐÐÞ¸Ä¡£
-$_vc = new ValidateCode();		//ÊµÀý»¯Ò»¸ö¶ÔÏó
-$_vc->doimg();		
-$_SESSION['authnum_session'] = $_vc->getCode();//ÑéÖ¤Âë±£´æµ½SESSIONÖÐ
+require 'ValidateCode.class.php';  //å…ˆæŠŠç±»åŒ…å«è¿›æ¥ï¼Œå®žé™…è·¯å¾„æ ¹æ®å®žé™…æƒ…å†µè¿›è¡Œä¿®æ”¹ã€‚
+$_vc = new ValidateCode();		//å®žä¾‹åŒ–ä¸€ä¸ªå¯¹è±¡
+$_vc->doimg();
+$_SESSION['authnum_session'] = $_vc->getCode();//éªŒè¯ç ä¿å­˜åˆ°SESSIONä¸­
 ?>

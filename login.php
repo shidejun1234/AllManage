@@ -62,7 +62,7 @@ input.button{width:152px; background: #66CC66; padding:5px 0 4px; margin-top:10p
                             <tr>
                                 <td>验证码：</td>
                                 <td><input type="text" id="captcha" name="captcha" AUTOCOMPLETE="OFF"  style="width: 70px;vertical-align:middle;"/>
-                                    <img src="./captcha.php" class="captcha-img" alt="验证码" onclick="this.src='captcha.php?'+Math.random();" title="点击切换另一张" />
+                                    <img src="captcha.php" class="captcha-img" alt="验证码" onclick="this.src='captcha.php?'+Math.random();" title="点击切换另一张" />
                                 </td>
                             </tr>
 
