@@ -65,10 +65,10 @@ body{
               <div id="submenu-div">
                 <ul>
                     <li><a href="#">帮助</a></li>
-                     <li><a href="password_modify.php" target="main-frame">个人设置</a></li>
+                     <!-- <li><a href="password_modify.php" target="main-frame">个人设置</a></li> -->
                      <li><a href="mainFrame.php"  target="_parent" >刷新</a></li>
                      <li><a href="../index.php"  target="_blank" >网站主页</a></li>
-                     <li><a href="#">用户：<?=$_SESSION ['userName']?></a></li>
+                     <li><a href="#">用户：<text style="color:#ff0000;"><?=$_SESSION ['userName']?></text></a></li>
                 </ul>
                 <div id="send_info" style="padding: 5px 10px 0 0; clear:right;text-align: right; color: #FF9900;width:40%;float: right;">
                   <a >&nbsp;</a>

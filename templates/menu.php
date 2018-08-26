@@ -157,9 +157,9 @@ if($row=mysql_fetch_array ( $result2 )){
                     </ul>
                 </li>
 
-                <?php
+                <!-- <?php
 
-                if($isAdmin){
+                /*if($isAdmin){
 
                     echo '
 
@@ -182,9 +182,9 @@ if($row=mysql_fetch_array ( $result2 )){
 
                         ';
 
-                    }
+                    }*/
 
-                ?>
+                ?> -->
 
             </ul>
         </div>

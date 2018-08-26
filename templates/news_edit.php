@@ -5,7 +5,11 @@ $id = $_POST['id'];
 // 访问news
 $query = "SELECT * from brand_news WHERE id=$id";
 $result = mysql_query($query);
-$row = mysql_fetch_array($result)
+$row = mysql_fetch_array($result);
+
+$query2 = "select * from brand";
+$result2 = mysql_query($query2);
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,8 +57,17 @@ $row = mysql_fetch_array($result)
           <tr>
             <td class="label" >栏目:</td>
             <td>
-              <select name="column">
-              ﻿<option value='新闻动态'>新闻动态</option><option value='成功案例'>成功案例</option>             </select>
+              <select name="column" id="column">
+              <?php
+                echo "<option value='".$row['column']."'>".$row['column']."</option>";
+                while ($row2 = mysql_fetch_array($result2)) {
+                  if ($row2['cName']!=$row['column']) {
+                    echo "<option value='".$row2['cName']."'>".$row2['cName']."</option>";
+                  }
+                }
+
+              ?>
+              </select>
             </td>
           </tr>
           <tr>
@@ -90,6 +103,7 @@ $row = mysql_fetch_array($result)
 <script>
     $("#submit").click(function(event) {
         var id=$("#id").val();
+        var column=$("#column option:selected").val();
         var title=$("#title").val();
         var description=$("#description").val();
         editor.sync();
@@ -99,6 +113,7 @@ $row = mysql_fetch_array($result)
      url: "news_edit_do.php",
      data: {
       id:id,
+      column:column,
       title:title,
       description:description,
       context:context

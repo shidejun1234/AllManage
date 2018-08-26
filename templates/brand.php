@@ -47,6 +47,10 @@ $row = mysql_fetch_array($result);
         width:90%;
     }
 
+    .imageTops li{
+        margin:0px 5px;
+    }
+
     ul li{
         list-style:none;
     }
@@ -142,7 +146,7 @@ $row = mysql_fetch_array($result);
                             if ($len>0) {
                                 echo "<div><ul id='sortable'>";
                                 for ($i=0; $i < $len; $i++) {
-                                    echo "<li><img name='imgCenter' src='".$pieces[$i]."' width='20%' style='border: 1px solid #000000;margin:0px;padding:0px;'>
+                                    echo "<li><img name='imgCenter' src='".$pieces[$i]."' width='20%' style='padding:0px;'>
                                     <input type='button' value='删除' name='".$i."' id='delete' onclick='delCenter(this)' class='btn btn-danger btn-sm shiny deletethis'></li>";
                                 }
                                 echo "</ul></div>";

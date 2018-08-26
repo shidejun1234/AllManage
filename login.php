@@ -10,7 +10,7 @@ if (isset ( $_SESSION ['userName'] )) {
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>﻿鹿角巷优化站后台系统登录</title>
+<title>﻿餐饮加盟后台系统登录</title>
 <link rel="icon" href="images/favicon.ico" type="image/x-ico" />
 <style type="text/css">
 body{margin: 0; padding: 0; background-color:#f7f7f7;font-size: 14px;font-family: "微软雅黑"}
