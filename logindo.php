@@ -13,9 +13,13 @@ if(isset($_POST["captcha"])&&isset($_POST["password"])&&isset($_POST["name"])){
         echo "<script>alert('验证码错误！')</script>";
         echo "<script>window.location.href='login.php'</script>";
     }else{
-        $sql="SELECT id FROM `user` WHERE name='$name' and password='$password'";
-        $query=mysql_query($sql);
-        if ($row = mysql_fetch_array ( $query )) {
+        $username = preg_replace('/[ ]|[\']/', '', $name);
+        $passcode = preg_replace('/[ ]|[\']/', '', $password);
+        //计算摘要
+        $password2 = sha1 ( $passcode );
+        $sql = "select * from user where username= '$username' and password='$password2' and stats<>'0'";
+        $result = mysql_query ( $sql);
+        if ($row = mysql_fetch_array ( $result )) {
             $_SESSION ['userName'] = $name;
             header ( "location:templates/mainFrame.php" );
         }else{

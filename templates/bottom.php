@@ -11,7 +11,7 @@ include('../isLogin.php');
 
         <div style="height:100% ; width:100%; position:absolute;text-align: center;">
 
-            <p style="color: #555555;line-height: 25px;">© 2016-2017  佛山市鹿角巷餐饮管理有限公司餐饮管理有限公司 版权所有 All rights reserved. | 粤ICP备18078110号</p>
+            <p style="color: #555555;line-height: 25px;">jumpdo</p>
 
         </div>
     </body>

@@ -16,15 +16,15 @@ if ((($_FILES["file"]["type"] == "image/gif")
     else
     {
 
-        //$imageName=iconv("UTF-8", "gbk",$newsTitle.date("YmdHis",time())."_". $_FILES["file"]["name"]);
-        $imageName=$title.date("YmdHis",time())."_". $_FILES["file"]["name"];
+        $imageName=iconv("UTF-8", "gbk",$title."_".date("YmdHis",time())."_". $_FILES["file"]["name"]);
+        //$imageName=$title."_".date("YmdHis",time())."_". $_FILES["file"]["name"];
         move_uploaded_file($_FILES["file"]["tmp_name"],
           "../upload/news_image/" . $imageName);
         //$protocol = empty($_SERVER['HTTP_X_CLIENT_PROTO']) ? 'http:' : $_SERVER['HTTP_X_CLIENT_PROTO'] . ':';
-        $image="http://".$_SERVER['SERVER_NAME']."/lujiaoxiang/upload/news_image/" .$title.date("YmdHis",time())."_". $_FILES["file"]["name"];
+        $image="https://".$_SERVER['SERVER_NAME']."/join/upload/news_image/" .$title."_".date("YmdHis",time())."_". $_FILES["file"]["name"];
         date_default_timezone_set("Asia/Shanghai");
         $date=date("Y/m/d H:i:s",time());
-        $sql="INSERT INTO `news`(`id`, `column`, `title`, `image`, `date`, `description`, `context`) VALUES (null,'$column','$title','$image','$date','$description','$context')";
+        $sql="INSERT INTO `brand_news`(`id`, `column`, `title`, `image`, `date`, `description`, `context`) VALUES (null,'$column','$title','$image','$date','$description','$context')";
         $query=mysql_query($sql);
         if ($query) {
             echo "<script>alert('添加成功！')</script>";

@@ -1,8 +1,16 @@
 <?php
 include("../dbconfig.php");
+include('../isLogin.php');
 // 访问student
 $query = "select * from brand";
 $result = mysql_query($query);
+
+$isAdmin=false;
+$sql2="select * from user where username='$sessionUserName' and stats='2'";
+$result2 = mysql_query ( $sql2);
+if($row=mysql_fetch_array ( $result2 )){
+    $isAdmin=true;
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -44,7 +52,13 @@ $result = mysql_query($query);
                      <th>ID</th>
                      <th>名字</th>
                      <th>修改时间</th>
-                     <th style='text-align:center;'><input type='button' value='删除选中' id='deletecheck' class='btn btn-danger btn-sm shiny'></th>
+                      <?php
+                        if ($isAdmin) {
+                          echo "<th style='text-align:center;'><input type='button' value='删除选中' id='deletecheck' class='btn btn-danger btn-sm shiny'></th>";
+                        }else{
+                          echo "<th style='text-align:center;'>操作</th>";
+                        }
+                      ?>
                  </tr>
              </thead>
              <tbody>
@@ -58,8 +72,17 @@ $result = mysql_query($query);
                   echo "<td>" . $row['id'] . "</td>";
                   echo "<td>" . $row['cName'] . "</td>";
                   echo "<td>" . $row['date'] . "</td>";
-            echo "<td style='text-align:center;'><input type='button' name='".$row['id']."' value='删除' id='delete' class='btn btn-danger btn-sm shiny deletethis'></td>";
+                  echo "<td style='text-align:center;'><a href='brand.php?id=".$row['id']."' class='btn btn-success btn-xs shiny '>编辑</a>";
+                  if ($isAdmin) {
+                    echo "&nbsp;&nbsp;<input type='button' name='".$row['id']."' value='删除' id='delete' class='btn btn-danger btn-sm shiny deletethis'></td>";
+                  }else{
+                    echo "</td>";
+                  }
+
             echo "</tr>";
+
+//<a href='brand.php?id=as'></a>
+
         }
         ?>
     </tbody>

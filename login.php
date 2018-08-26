@@ -42,7 +42,7 @@ input.button{width:152px; background: #66CC66; padding:5px 0 4px; margin-top:10p
         <marquee scrollAmount=5 width=100% ><FONT style="font-size: 14pt;color:#FF6666;font-family: '宋体';" >欢迎来到本系统</FONT></marquee>
     </div>
     <div class="login-main">
-        <div class="login-top"><h2 style="color:#fff;">网站后台登录</h2> <a href="index.html" target="_blank">返回网站主页</a></div>
+        <div class="login-top"><h2 style="color:#fff;">网站后台登录</h2> <a href="index.php" target="_blank">返回网站主页</a></div>
         <div class="login-content">
             <form method="post" action="logindo.php" name='theForm' onsubmit="return validate()" >
               <table align="center" >
@@ -78,7 +78,7 @@ input.button{width:152px; background: #66CC66; padding:5px 0 4px; margin-top:10p
             </form>
         </div>
 
-        <p class="copyright">© 2016-2017 佛山市鹿角巷餐饮管理有限公司 All rights reserved. | 粤ICP备18078110号 Version: 2.0.1</p>
+        <p class="copyright">jumpdo</p>
    </div>
   </div>
 <script language="JavaScript" src="js/jquery-3.3.1.min.js"></script>

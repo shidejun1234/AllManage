@@ -3,7 +3,7 @@ include("../dbconfig.php");
 include('../isLogin.php');
 $id = $_POST['id'];
 // 访问news
-$query = "SELECT * from news WHERE id=$id";
+$query = "SELECT * from brand_news WHERE id=$id";
 $result = mysql_query($query);
 $row = mysql_fetch_array($result)
 ?>
@@ -40,7 +40,7 @@ $row = mysql_fetch_array($result)
 <!--当前操作  -->
 <div id="pagehead" style="width: 100%;position: fixed; top: 0px;background:#DDEEF2;padding: 12px;border-bottom: 2px solid #BBDDE5; ">
   <span style="font-size: 13px;color: #555555;">当前操作 ></span>
-  <span style="font-size: 13px;color: gray;" >增加文章</span>
+  <span style="font-size: 13px;color: gray;" >编辑文章</span>
 </div>
 <!--当前操作  -->
 <!-- start client form -->

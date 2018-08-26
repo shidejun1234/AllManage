@@ -37,11 +37,11 @@ if (isset($_POST['imgStr'])) {
       $fileName=$_POST['fileName'];
       $cName=$_POST['cName'];
       $imgName=$cName."_".$iid."_".time()."_".$_FILES["file"]["name"];
-      // move_uploaded_file($_FILES["file"]["tmp_name"],
-      //   "../upload/brand_image/" . iconv("UTF-8", "gbk",$imgName));
       move_uploaded_file($_FILES["file"]["tmp_name"],
-        "../upload/brand_image/" . $imgName);
-      $imgName="http://".$_SERVER['SERVER_NAME']."/lujiaoxiang/upload/brand_image/" .$imgName;
+        "../upload/brand_image/" . iconv("UTF-8", "gbk",$imgName));
+      // move_uploaded_file($_FILES["file"]["tmp_name"],
+      //   "../upload/brand_image/" . $imgName);
+      $imgName="https://".$_SERVER['SERVER_NAME']."/join/upload/brand_image/" .$imgName;
       date_default_timezone_set("Asia/Shanghai");
       $date=date("Y/m/d H:i:s",time());
 

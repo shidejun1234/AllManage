@@ -1,18 +1,27 @@
 <?php
 include("../dbconfig.php");
 include('../isLogin.php');
-if (isset($_POST['cName'])) {
+$sql2="select * from user where username='$sessionUserName' and stats='2'";
+$result2 = mysql_query ( $sql2);
+if(!$row=mysql_fetch_array ( $result2 )){
+    header ( "location:../index.php" );
+}elseif (isset($_POST['cName'])) {
     $cName=$_POST['cName'];
-    date_default_timezone_set("Asia/Shanghai");
-    $date=date("Y/m/d H:i:s",time());
-    $sql="INSERT INTO `brand` (`id`, `cName`, `imageTop`, `wenhua`, `imageCenter`, `date`) VALUES (NULL, '$cName', '', '', '', '$date')";
-    $query=mysql_query($sql);
-    if ($query) {
-        echo "<script>alert('添加成功！')</script>";
-        echo "<script>window.location.href='mainFrame.php'</script>";
+    $cName = preg_replace('/[ ]|[\']/', '', $cName);
+    if ($cName!="") {
+        date_default_timezone_set("Asia/Shanghai");
+        $date=date("Y/m/d H:i:s",time());
+        $sql="INSERT INTO `brand` (`id`, `cName`, `imageTop`, `wenhua`, `imageCenter`, `date`) VALUES (NULL, '$cName', '', '', '', '$date')";
+        $query=mysql_query($sql);
+        if ($query) {
+            echo "<script>alert('添加成功！')</script>";
+            echo "<script>window.location.href='mainFrame.php'</script>";
+        }else{
+            echo "<script>alert('添加失败！')</script>";
+            echo "<script>window.location.href='mainFrame.php'</script>";
+        }
     }else{
-        echo "<script>alert('添加失败！')</script>";
-        echo "<script>window.location.href='mainFrame.php'</script>";
+        echo "<script>alert('请输入正确的名称！')</script>";
     }
 }
 ?>

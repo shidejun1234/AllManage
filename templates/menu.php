@@ -3,6 +3,14 @@ include("../dbconfig.php");
 include('../isLogin.php');
 $query = "select * from brand";
 $result = mysql_query($query);
+
+$isAdmin=false;
+$sql2="select * from user where username='$sessionUserName' and stats='2'";
+$result2 = mysql_query ( $sql2);
+if($row=mysql_fetch_array ( $result2 )){
+    $isAdmin=true;
+}
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -53,34 +61,82 @@ $result = mysql_query($query);
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <div class="item">
-                        <img src="../images/icon01.gif" />
-                        <a href="#">留言管理</a>
-                    </div>
-                    <ul class="menu1">
+
+                <?php
+
+                if($isAdmin){
+
+                    echo '
+
                         <li>
-                            <img src="../images/icon03.gif" />
-                            <a href="message_check.php" target="main-frame">查看留言</a>
+                            <div class="item">
+                                <img src="../images/icon01.gif" />
+                                <a href="#">留言管理</a>
+                            </div>
+                            <ul class="menu1">
+                                <li>
+                                    <img src="../images/icon03.gif" />
+                                    <a href="message_check.php" target="main-frame">查看留言</a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
-                <li>
-                    <div class="item">
-                        <img src="../images/icon01.gif" />
-                        <a href="#">品牌管理</a>
-                    </div>
-                    <ul class="menu1">
+
+                        ';
+
+                    }
+
+                ?>
+
+                <?php
+
+                if($isAdmin){
+
+                    echo '
+
+
                         <li>
-                            <img src="../images/icon03.gif" />
-                            <a href="brand_add.php" target="main-frame">添加品牌</a>
+                            <div class="item">
+                                <img src="../images/icon01.gif" />
+                                <a href="#">品牌管理</a>
+                            </div>
+                            <ul class="menu1">
+                                <li>
+                                    <img src="../images/icon03.gif" />
+                                    <a href="brand_add.php" target="main-frame">添加品牌</a>
+                                </li>
+                                <li>
+                                    <img src="../images/icon03.gif" />
+                                    <a href="brand_show.php" target="main-frame">品牌列表</a>
+                                </li>
+                            </ul>
                         </li>
+
+                        ';
+
+                    }else{
+
+                    echo '
+
+
                         <li>
-                            <img src="../images/icon03.gif" />
-                            <a href="brand_show.php" target="main-frame">品牌列表</a>
+                            <div class="item">
+                                <img src="../images/icon01.gif" />
+                                <a href="#">品牌管理</a>
+                            </div>
+                            <ul class="menu1">
+                                <li>
+                                    <img src="../images/icon03.gif" />
+                                    <a href="brand_show.php" target="main-frame">品牌列表</a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
+
+                        ';
+
+                    }
+
+                ?>
+
                 <li>
                     <div class="item">
                         <img src="../images/icon01.gif" />
@@ -100,22 +156,36 @@ $result = mysql_query($query);
                         ?>
                     </ul>
                 </li>
-                <li>
-                    <div class="item">
-                        <img src="../images/icon01.gif" />
-                        <a href="#">系统设置</a>
-                    </div>
-                    <ul class="menu1">
+
+                <?php
+
+                if($isAdmin){
+
+                    echo '
+
                         <li>
-                            <img src="../images/icon03.gif" />
-                            <a href="password_modify.php" target="main-frame">修改密码</a>
+                            <div class="item">
+                                <img src="../images/icon01.gif" />
+                                <a href="#">系统设置</a>
+                            </div>
+                            <ul class="menu1">
+                                <li>
+                                    <img src="../images/icon03.gif" />
+                                    <a href="password_modify.php" target="main-frame">修改密码</a>
+                                </li>
+                                <li>
+                                    <img src="../images/icon03.gif" />
+                                    <a href="user_check.php" target="main-frame">管理用户</a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <img src="../images/icon03.gif" />
-                            <a href="user_check.php" target="main-frame">管理用户</a>
-                        </li>
-                    </ul>
-                </li>
+
+                        ';
+
+                    }
+
+                ?>
+
             </ul>
         </div>
         <script type="text/javascript">

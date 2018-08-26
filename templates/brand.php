@@ -54,9 +54,13 @@ $row = mysql_fetch_array($result);
 </style>
 <script>
   $(function() {
-    $( "#sortable1" ).sortable();
+    $( "#sortable1" ).sortable({
+      placeholder: "ui-state-highlight"
+    });
     $( "#sortable1" ).disableSelection();
-    $( "#sortable" ).sortable();
+    $( "#sortable" ).sortable({
+      placeholder: "ui-state-highlight"
+    });
     $( "#sortable" ).disableSelection();
 });
 </script>
@@ -64,7 +68,15 @@ $row = mysql_fetch_array($result);
 </head>
 
 <body>
-    <div style="width:100%;">
+
+<!--当前操作  -->
+<div id="pagehead" style="width: 100%;position: fixed; top: 0px;background:#DDEEF2;padding: 12px;border-bottom: 2px solid #BBDDE5; ">
+  <span style="font-size: 13px;color: #555555;">当前操作 ></span>
+  <span style="font-size: 13px;color: gray;" >修改内容</span>
+</div>
+<!--当前操作  -->
+
+    <div style="width:100%;margin-top: 3%;">
         <div id="page-inner">
             <div class="row">
                 <div class="col-md-12">
@@ -81,20 +93,21 @@ $row = mysql_fetch_array($result);
                             <input type='hidden' id="id" name='id' type='text' value="<?=$row['id']?>">
                             <input type='hidden' id="cName" name='cName' type='text' value="<?=$row['cName']?>">
                             <br/>
-                            <text>修改顶部图片</text>
+                            <text>修改轮播图</text>
                             <br/>
                             <?php
-                            $str=$row['imageTop'];
-                            if ($str!="") {
-                                $pieces1 = explode("??", $str);
-                                $len=count($pieces1);
+                            $str1=$row['imageTop'];
+                            if ($str1!="") {
+                                $pieces1 = explode("??", $str1);
+                                $len1=count($pieces1);
                             }else{
-                                $len=0;
+                                $len1=0;
                             }
 
-                            if ($len>0) {
+                            if ($len1>0) {
                                 echo "<div><ul id='sortable1' class='imageTops'>";
-                                for ($i=0; $i < $len; $i++) {
+                                for ($i=0; $i < $len1; $i++) {
+                                    //<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span>
                                     echo "<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span><img name='imgTop' src='".$pieces1[$i]."' width='100%' style='border: 1px solid #000000;margin:0px;padding:0px;'><br/>
                                     <input type='button' value='删除' name='".$i."' id='delete' onclick='delTop(this)' class='btn btn-danger btn-sm shiny deletethis'></li>";
                                 }
@@ -115,6 +128,8 @@ $row = mysql_fetch_array($result);
                             <br/>
                             <textarea name="wenhua" id="wenhua" rows="8" cols="40" onchange="edit(this)"><?=$row['wenhua']?></textarea>
                             <br/><br/>
+                            <text>修改内容图</text>
+                            <br/>
                             <?php
                             $str=$row['imageCenter'];
                             if ($str!="") {
@@ -127,7 +142,7 @@ $row = mysql_fetch_array($result);
                             if ($len>0) {
                                 echo "<div><ul id='sortable'>";
                                 for ($i=0; $i < $len; $i++) {
-                                    echo "<li class='ui-state-default'><span class='ui-icon ui-icon-arrowthick-2-n-s'></span><img name='imgCenter' src='".$pieces[$i]."' width='20%' style='border: 1px solid #000000;margin:0px;padding:0px;'>
+                                    echo "<li><img name='imgCenter' src='".$pieces[$i]."' width='20%' style='border: 1px solid #000000;margin:0px;padding:0px;'>
                                     <input type='button' value='删除' name='".$i."' id='delete' onclick='delCenter(this)' class='btn btn-danger btn-sm shiny deletethis'></li>";
                                 }
                                 echo "</ul></div>";

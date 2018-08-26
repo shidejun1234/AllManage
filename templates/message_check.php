@@ -1,8 +1,14 @@
 <?php
 include("../dbconfig.php");
-// 访问student
-$query = "select * from person";
+include('../isLogin.php');
+$query = "SELECT * from person order by stats,time desc";
 $result = mysql_query($query);
+
+$sql2="select * from user where username='$sessionUserName' and stats='2'";
+$result2 = mysql_query ( $sql2);
+if(!$row=mysql_fetch_array ( $result2 )){
+    header ( "location:../index.php" );
+}
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -42,6 +48,7 @@ $result = mysql_query($query);
                    <tr>
                      <th style='text-align:center;'><input type='checkbox' id="checkAll" name='checkAll' ></th>
                      <th>ID</th>
+                     <th>加盟</th>
                      <th>姓名</th>
                      <th>手机号码</th>
                      <th>留言</th>
@@ -59,11 +66,12 @@ $result = mysql_query($query);
                   echo "<tr class='$linecolor'>";
                   echo "<td style='text-align:center;'><input type='checkbox' name='box' id='box' value='".$row['id']."'></td>";
                   echo "<td>" . $row['id'] . "</td>";
-                  echo "<td>" . $row['name'] . "</td>";
+                  echo "<td>" . $row['jiameng'] . "</td>";
+                  echo "<td>" . $row['uName'] . "</td>";
                   echo "<td>" . $row['phone'] . "</td>";
                   echo "<td>" . $row['liuyan'] . "</td>";
                   echo "<td>" . $row['time'] . "</td>";
-                  if($row['status']=="1"){
+                  if($row['stats']=="1"){
                     $status="已看";
                     $btncolor="btn-success";
                 }else{
@@ -77,7 +85,7 @@ $result = mysql_query($query);
                 </div>
             </div></td>";*/
             echo "<td style='text-align:center;'><div class='form-group input-group status' id='status'>
-            <a id='ttt".$row['id']."' onclick='status(".$row['id'].")' class='btn btn-sm shiny deletethis ".$btncolor."'>".$status."</a>
+            <a id='ttt".$row['id']."' onclick='status(".$row['id'].")' class='btn btn-xs shiny deletethis ".$btncolor."'>".$status."</a>（点击修改）
             </div></td>";
             echo "<td style='text-align:center;'><input type='button' name='".$row['id']."' value='删除' id='delete' class='btn btn-danger btn-sm shiny deletethis'></td>";
             echo "</tr>";

@@ -2,7 +2,7 @@
 include("../dbconfig.php");
 include('../isLogin.php');
 // 访问student
-$query = "select * from news";
+$query = "select * from brand_news";
 $result = mysql_query($query);
 
 ?>
@@ -25,7 +25,7 @@ $result = mysql_query($query);
 <!--当前操作  -->
 <div id="pagehead" style="width: 100%;position: fixed; top: 0px;background:#DDEEF2;padding: 12px;border-bottom: 2px solid #BBDDE5; ">
 	<span style="font-size: 13px;color: #555555;">当前操作 &gt;</span>
-	<span style="font-size: 13px;color: gray;">管理新闻</span>
+	<span style="font-size: 13px;color: gray;">管理文章</span>
 </div>
 <!--当前操作  -->
 <div id="page-inner">

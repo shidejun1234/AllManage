@@ -11,7 +11,7 @@ if ($status=="未看") {
 }
 
 //sql语句中字符串数据类型都要加引号，数字字段随便
-$sql = "UPDATE `person` SET `status`='$status' WHERE id=$id";
+$sql = "UPDATE `person` SET `stats`='$status' WHERE id=$id";
 //exit($sql);
 
 if ($status=="1") {

@@ -1,5 +1,9 @@
 <?php
+include("../dbconfig.php");
 include('../isLogin.php');
+// 访问student
+$query = "select * from brand";
+$result = mysql_query($query);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -47,7 +51,13 @@ include('../isLogin.php');
             <td class="label" >栏目:</td>
             <td>
               <select name="column">
-              ﻿<option value='新闻动态'>新闻动态</option><option value='成功案例'>成功案例</option>             </select>
+              <?php
+                while ($row = mysql_fetch_array($result)) {
+                  echo "<option value='".$row['cName']."'>".$row['cName']."</option>";
+                }
+
+              ?>
+              </select>
             </td>
           </tr>
           <tr>
